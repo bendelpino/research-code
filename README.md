@@ -20,7 +20,7 @@ Make sure you have the following installed:
 - Python 3.x
 - Gemini API
 - Youtube API
-- BrowserUse library
+- BrowserUse library --> https://github.com/browser-use/browser-use
 
 ### Installation
 
