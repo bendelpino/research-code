@@ -8,4 +8,7 @@ x/
 youtube/results/
 youtube/results_assemblyAI/
 
+# Ignore hidden files
+youtube/.DS_Store
+.DS_Store
 
