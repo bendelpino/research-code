@@ -26,6 +26,7 @@ if not GEMINI_API_KEY:
 youtube = build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
 gemini_client = genai.Client(api_key=GEMINI_API_KEY)
 
+
 def get_youtube_videos(search_term: str, max_results: int = 20) -> List[Dict[str, str]]:
     """Fetch YouTube videos based on search term."""
     search_response = (
@@ -57,6 +58,7 @@ def get_youtube_videos(search_term: str, max_results: int = 20) -> List[Dict[str
 
     return videos
 
+
 def save_videos_to_file(videos: List[Dict[str, str]], search_term: str) -> str:
     """Save video results to a text file."""
     filename = f"results/{search_term}_videos.txt"
@@ -76,6 +78,7 @@ def save_videos_to_file(videos: List[Dict[str, str]], search_term: str) -> str:
 
     return filename
 
+
 def get_video_id_from_url(url: str) -> str:
     """Extract video ID from YouTube URL."""
     patterns = [r"(?:v=|/)([0-9A-Za-z_-]{11}).*", r"youtu.be/([0-9A-Za-z_-]{11})"]
@@ -84,6 +87,7 @@ def get_video_id_from_url(url: str) -> str:
         if match:
             return match.group(1)
     return None
+
 
 def get_transcript(video_url: str) -> str:
     """Get transcript for a single YouTube video."""
@@ -97,6 +101,7 @@ def get_transcript(video_url: str) -> str:
         return formatter.format_transcript(transcript)
     except Exception as e:
         return f"Could not fetch transcript: {str(e)}"
+
 
 def save_transcripts_to_file(videos: List[Dict[str, str]], search_term: str) -> str:
     """Save transcripts for all videos to a single file."""
@@ -118,6 +123,7 @@ def save_transcripts_to_file(videos: List[Dict[str, str]], search_term: str) -> 
             f.write("\n" + "=" * 80 + "\n\n")
 
     return filename
+
 
 def generate_content(prompt: str) -> str:
     """Generate content using Gemini API with streaming."""
@@ -146,6 +152,7 @@ def generate_content(prompt: str) -> str:
         response_text += chunk.text
 
     return response_text
+
 
 def read_transcripts_file(search_term: str) -> List[Dict[str, str]]:
     """Read transcripts from the previously generated file."""
@@ -184,6 +191,7 @@ def read_transcripts_file(search_term: str) -> List[Dict[str, str]]:
         videos.append(current_video.copy())
 
     return videos
+
 
 def analyze_transcript(video: Dict[str, str]) -> Dict[str, str]:
     """Use Gemini to analyze a video transcript and generate a summary with quotes."""
@@ -246,6 +254,7 @@ def analyze_transcript(video: Dict[str, str]) -> Dict[str, str]:
             "analysis": f"Error analyzing transcript: {str(e)}",
         }
 
+
 def save_summaries_to_file(analyses: List[Dict[str, str]], search_term: str) -> str:
     """Save the analyses to a structured markdown file."""
     filename = f"results/{search_term}_summaries.md"
@@ -279,9 +288,10 @@ def save_summaries_to_file(analyses: List[Dict[str, str]], search_term: str) -> 
 
     return filename
 
+
 def main():
     search_term = input("Enter the search term for YouTube videos: ")
-    
+
     try:
         # Step 1: Scrape YouTube videos
         print("\nStep 1: Fetching YouTube videos...")
@@ -298,12 +308,14 @@ def main():
         print("\nStep 3: Generating summaries with Gemini...")
         videos_with_transcripts = read_transcripts_file(search_term)
         analyses = []
-        
+
         for i, video in enumerate(videos_with_transcripts, 1):
-            print(f"Analyzing video {i}/{len(videos_with_transcripts)}: {video['title']}")
+            print(
+                f"Analyzing video {i}/{len(videos_with_transcripts)}: {video['title']}"
+            )
             analysis = analyze_transcript(video)
             analyses.append(analysis)
-            
+
             if i < len(videos_with_transcripts):
                 print("Waiting 10 seconds before next analysis...")
                 time.sleep(10)
@@ -314,5 +326,6 @@ def main():
     except Exception as e:
         print(f"\nAn error occurred: {str(e)}")
 
+
 if __name__ == "__main__":
-    main() 
+    main()

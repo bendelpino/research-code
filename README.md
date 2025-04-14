@@ -15,11 +15,11 @@ This repository is a research-oriented collection of code designed primarily for
 
 ### Prerequisites
 
-Make sure you have the following installed:
+Make sure you have the following:
 
 - Python 3.x
-- Gemini API
-- Youtube API
+- Gemini API key
+- Youtube API key
 - BrowserUse library --> https://github.com/browser-use/browser-use
 
 ### Installation
@@ -29,3 +29,14 @@ Make sure you have the following installed:
    git clone https://github.com/yourusername/your-repository.git
    cd your-repository
    ```
+
+### Try them
+
+yt_worflow.py 
+
+- Run the code and the terminal will ask you to input a search term.
+
+specific_yt_transcripts.py
+
+- Run the code from a terminal with the URL to the video after the script name.
+- 'python specific_yt_transcripts.py {*url}*
