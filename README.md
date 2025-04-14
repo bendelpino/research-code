@@ -4,8 +4,8 @@ This repository is a research-oriented collection of code designed primarily for
 
 ## Repository Structure
 
-- **BrowserUse**Contains code that uses the BrowserUse agent to search the web.*Note: This project is still a work in progress.*
-- **YouTube**Contains a script that integrates with Gemini to perform the following tasks:
+- **BrowserUse**  Contains code that uses the BrowserUse agent to search the web.*Note: This project is still a work in progress.*
+- **YouTube** Contains a script that integrates with Gemini to perform the following tasks:
 
   - Retrieve the first 20 YouTube videos that appear for a given keyword search.
   - Extract their transcripts.
