@@ -199,7 +199,7 @@ def analyze_transcript(video: Dict[str, str]) -> Dict[str, str]:
     Analyze the following transcripts from YouTube videos and provide:
     1. A concise summary (1 paragraph) of the main points and key ideas of each video.
     2. 10 or more relevant and impactful quotes from the transcript about the ideas below. 
-       Any time the script mentiones on eof the keywords below, please extract the exact quote and include it.
+       Any time the script mentions one of the keywords below, please extract the exact quote and include it.
         Please search for quotes about these ideas:
         - Product Management
         - Culture

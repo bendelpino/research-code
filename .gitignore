@@ -1,12 +1,17 @@
 # Work in progress
-exa_ai/
 medium/
 linkedin/
 x/
+exa_ai/content_search.py
 
 # Output files
 youtube/results/
 youtube/results_assemblyAI/
+youtube/results_from_single_files/
+youtube/trancript_txts/
+exa_ai/results/
+exa_ai/notebooks/
+exa_ai/ToDo.md
 
 # Ignore hidden files
 youtube/.DS_Store
